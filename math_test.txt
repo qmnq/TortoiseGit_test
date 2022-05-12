@@ -1,0 +1,12 @@
+#include<stdio.h>
+
+int Add(int x,int y){
+	return x + y;
+}
+int main(){
+	int a = 6;
+	int b = 7;
+	int c = Add(a,b);
+	printf("%d\n",z);
+	return 0;
+}
