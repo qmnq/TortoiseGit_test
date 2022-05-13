@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() 
+{
+    //字符数组s和s0
+    char s[] = "Hello World!";//可以成为字符串
+    char s0[] = {'H', 'e', 'l', 'l', 'o'};//不可以成为字符串
+    printf("%s\n", s);
+    //printf(“%s\n”, s0);   //编译报错
+    printf("s[0] = %c\n", s[0]);
+    char *p1 = s;
+    *p1 = 'h';
+    printf("Corrected:s[0] = %c\n", s[0]);
+    printf("%s\n", s);
+    
+    //字符串常量本质是一个数组，可以做常量指针，代表该字符串的地址
+    //字符串常量的本质是一个无名的字符数组
+    //字符串常量的字符不可改变（存储于只读数据段）
+    //字符串常量至少包含一个字符（即’\0’结束符）
+    char  ch1  = "Hello World!"[0];
+    char  ch2 = *"";  //    等价于ch2 = ‘\0’,它的ASCII码值为0
+    printf("ch1 = %s\n", ch1);
+    printf("ch2 = %c\n", ch2);
+
+    //指针变量p2指向存储在只读数据段的字符串常量
+    char *p2  = "Hello World!";
+    printf("%s\n", p2);
+    printf("*p2 = %c\n", *p2);
+    *p2 = 'h';
+    printf("*p2 = %c\n", *p2);//运行时报错
+
+    return 0;
+}

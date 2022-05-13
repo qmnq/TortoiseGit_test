@@ -1,0 +1,25 @@
+//向数组中插入一个数，让数组顺序排序
+#include<stdio.h>
+int main() {
+    int a[9] = { 1,2,3,4,6,7,8,9 }, number, t;
+    t = sizeof(a) / sizeof(a[0]);
+    scanf_s("%d", &number);
+
+    for (int i = 0; i < t - 1; i++) {
+        if (a[i] >= number) {
+            for (int j = t - 1; j >= i; j--) {
+                a[j] = a[j - 1];
+            }
+            a[i] = number;
+            break;
+        }
+        else if (number > a[t - 2]) {
+            a[t - 1] = number;
+            break;
+        }
+    }
+    for (int i = 0; i <= t - 1; i++) {
+        printf("%d ", a[i]);
+    }
+    return 0;
+}

@@ -1,0 +1,52 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include"game.h"
+void menu() {
+    printf("****************************\n");
+    printf("*******     1.play    ******\n");
+    printf("*******     0.exit    ******\n");
+    printf("****************************\n");
+}
+void game() {
+    //雷的信息存储
+        //布置好的雷的信息
+    char mine[ROWS][COLS] = { 0 };//11*11
+        //排查好的雷的信息
+    char show[ROWS][COLS] = { 0 };
+    //初始化
+    InitBoard(mine, ROWS, COLS, '0');
+    InitBoard(show, ROWS, COLS, '*');
+    //打印棋盘
+    //DisPlayBoard(mine, ROW, COL);
+    DisPlayBoard(show, ROW, COL);
+    //布置雷,随机放入1
+    SetMine(mine, ROW, COL);
+    //DisPlayBoard(mine, ROW, COL);//    打印雷
+    //DisPlayBoard(mine, ROW, COL);
+    //扫雷
+    FindMine(mine, show, ROW, COL);//既要操作mine数组，又要操作show数组
+    //从mine数组获得元素后传到show数组中，操作的是9*9
+}
+void test() {
+    int input = 0;
+    srand((unsigned)time(NULL));
+    do {
+        menu();
+        printf("请输入：>");
+        scanf_s("%d", &input);
+        switch (input) {
+        case 1:
+            game();
+            break;
+        case 0:
+            printf("退出游戏。");
+            break;
+        default:
+            printf("输入错误，请重新输入.");
+            break;
+        }
+    } while(input);
+}
+int main() {
+    test();
+    return 0;
+}
