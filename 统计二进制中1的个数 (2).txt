@@ -1,0 +1,26 @@
+//统计二进制中1的个数
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//#include<stdlib.h>
+int count_bit_one(unsigned int n) {//unsigned int 解决负数补码符号位的影响
+    int count = 0;
+    while (n) {
+        
+        if ((n & 1) == 1) {//&的优先级是小于==的，所以要加括号！
+            count++;
+        }
+        n = n >> 1;
+    }
+    return count;
+}
+int main() {
+    int a = 13;
+    // 1101(13)
+    //00000000000000000000000001101  (原码)
+    scanf("%d", &a);
+    //一个函数，求一个数的二进制表示中的1个数
+    int coun =count_bit_one(a);
+    printf("count = %d\n", coun);
+    //system("pause");//system库函数--执行系统命令--pause--（暂停）
+    return 0;
+}

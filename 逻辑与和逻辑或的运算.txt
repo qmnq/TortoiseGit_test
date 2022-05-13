@@ -1,0 +1,7 @@
+#include<stdio.h>
+int main(){
+    int i = 0, a = 0, b = 2, c = 3, d = 4;
+    i = a++ && ++b && d++;//先使用后执行，&&后不再执行
+    printf(" a = %d\n b = %d\n c =%d\n d = %d\n", a, b, c, d);
+    return 0;
+}

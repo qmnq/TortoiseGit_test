@@ -1,0 +1,17 @@
+ตÝน้
+int my_strlen(char* str)
+{
+    if ('\0' != *str)
+    {
+        return 1 + my_strlen(str + 1);
+    }
+    else
+        return 0;
+}
+
+int main()
+{
+    char ch[] = "hello";
+    int len = my_strlen(ch);
+    printf("%d\n", len);
+}

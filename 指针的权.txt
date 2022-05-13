@@ -1,0 +1,27 @@
+#include<stdio.h>
+
+int main() {
+
+    int arr[] = { 1,2,3,4,5 };
+
+    short* p = (short*)arr;//（强制类型转化）转化为short
+
+    int i = 0;
+
+    for (i = 0; i < 4; i++) {
+
+        *(p + i) = 0;//每两次循环操作一个字节
+
+    }
+
+    for (i = 0; i < 5; i++) {
+
+        printf("%d ", arr[i]);
+
+    }
+
+    return 0;
+
+}
+
+//0 0 3 4 5

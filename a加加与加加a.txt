@@ -1,0 +1,7 @@
+#include<stdio.h>
+int main() {
+    int a = 0;
+    int i = a++;
+    printf("%d %d\n", a, i);
+    return 0;
+}

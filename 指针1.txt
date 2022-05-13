@@ -1,0 +1,19 @@
+指针
+int my_strlen(char* str)
+{
+    int* start = str;
+    int len = 0;
+    while ('\0' != *str)
+    {
+        str++;//while循环结束时找到了最后一个元素的指针
+    }
+    len = str - start;//最后元素指针-首元素指针 = 两指针之间元素个数
+return len;
+}
+
+int main()
+{
+    char ch[] = "hello";
+    int len = my_strlen(ch);
+    printf("%d\n", len);
+}

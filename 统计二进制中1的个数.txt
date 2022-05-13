@@ -1,0 +1,19 @@
+//统计二进制中1的个数
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int count_bit_one(int n) {
+    int count = 0;
+    while (n) {
+        n = n & (n - 1);
+        count++;
+    }
+    return count;
+}
+int main() {
+    int a = 0;
+    scanf("%d", &a);
+    //写一个函数求a的二进制（补码）表示中有几个1
+    int count = count_bit_one(a);
+    printf("%d", count);
+    return 0;
+}

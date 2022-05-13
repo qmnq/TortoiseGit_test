@@ -1,0 +1,18 @@
+//º¯Êı£¨¼ÆÊıÆ÷£©
+int my_strlen(char *str)
+{
+    int count = 0;
+    while ('\0' != *str)
+    {
+        count++;
+        str++;
+    }
+    return count;
+}
+
+int main()
+{
+    char ch[] = "hell0";
+    int len = my_strlen(ch);
+    printf("%d\n", len);
+}

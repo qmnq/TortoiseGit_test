@@ -1,0 +1,13 @@
+strlen函数，求字符串长度是不算/0的
+sizeof（）求字符串长度，要算/0的
+使用指针和循环实现
+int get_length(char str[])
+{
+    char *p = str;
+    int count = 0;
+    while (*p++ != '\0')
+    {
+        count++;
+    }
+    return count;
+}

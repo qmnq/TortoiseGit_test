@@ -1,0 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+    int a = 0x11223344;//在整型里面放了11223344，
+                        //但它在内存中是倒着放的，即：44 33 22 11，44占一个字节
+    char* pc = (char*)&a;//pc的类型是char* ，
+    *pc = 0;//故*pc只能操作一个字节
+    printf("%x\n", a);
+    return 0;
+}
