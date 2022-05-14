@@ -1,0 +1,19 @@
+//字符串的拷贝
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+void my_strcpy(char* dest, char* scr) {
+	while (*scr != '\0') {
+		*dest = *scr;
+		dest++;
+		scr++;
+	}
+	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+}
+int main() {
+	char arr1[] = "####################";
+	char arr2[] = "bit";
+	my_strcpy(arr1, arr2);
+	printf("%s\n", arr1);//字符串的拷贝会将'\0'也拷贝过来。
+	printf("%s\n", arr2);
+	return 0;
+}

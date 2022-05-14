@@ -1,0 +1,58 @@
+//字符串的拷贝
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<assert.h>
+//原代码
+//void my_strcpy(char* dest, char* scr) {
+//	while (*scr != '\0') {
+//		*dest = *scr;
+//		dest++;
+//		scr++;
+//	}
+//	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+//}
+
+
+//第一次优化
+//void my_strcpy(char* dest, char* scr) {
+//	while (*scr != '\0') {
+//		*dest++ = *scr++;
+//	}
+//	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+//}
+
+//第二次优化
+//void my_strcpy(char* dest, char* scr) {
+//	while (*dest++ = *scr++) {
+//		;
+//	}
+//	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+//}
+
+////第三次优化(当传递的是NULL (空指针的时候，程序会崩溃)，因此，可以先加一个条件判断语句.但它并没有告诉我们传参有问题！)
+//void my_strcpy(char* dest, char* scr) {
+//	if (dest != NULL && scr != NULL) {
+//		while (*dest++ = *scr++) {
+//			;
+//		}
+//	}
+//	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+//}
+
+//第四次优化(当传递的是NULL时，)
+//#include<assert.h>
+void my_strcpy(char* dest, char* scr) {
+	assert(dest !=NULL && scr != NULL);//assert--断言  。判断表达式：表达式如果为真，assert什么都不发生，表达式如果为假assert就会报错
+		while (*dest++ = *scr++) {
+			;
+		}
+	*dest = *scr;//当*scr是\0的时候，将\0拷贝到*dest中
+}
+int main() {
+	char arr1[] = "####################";
+	char arr2[] = "bit";
+	my_strcpy(arr1, arr2);
+	printf("%s\n", arr1);//字符串的拷贝会将'\0'也拷贝过来。
+	printf("%s\n", arr2);
+	return 0;
+}
