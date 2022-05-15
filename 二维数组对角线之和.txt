@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main()
+{
+	int i, j;
+	float a[3][3], sum = 0;
+
+	//输入数组
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++)
+			scanf("%f", &a[i][j]);
+
+	//计算主次对角线之和
+	for (i = 0; i < 3; i++)
+		for (j = 0; j < 3; j++) {
+			if ((i == j) || (i + j == 2))sum += a[i][j];
+		}
+	//输出
+	printf("\n主对角线和次对角线之和：%.2f", sum);
+	return 0;
+}
