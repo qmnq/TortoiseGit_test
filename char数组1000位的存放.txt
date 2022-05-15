@@ -1,0 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+int main() {
+	char a[1000];
+	int i;
+	for (i = 0; i < 1000; i++) {//-1  ->  -128 -> 127 -> 1 ->0 ,遇到0，strlen停下
+		a[i] = -1 - i;//求字符串的长度，遇到'\0'就结束了，但数组中的元素要一直存放到第1000个才会结束
+	}
+	printf("%d", strlen(a));//因此，打印255
+	return 0;
+}
