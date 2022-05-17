@@ -1,0 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	char* arr[5];//arr是五个元素。每个元素是char*  他是一个字符指针的数组
+	char* (*pa)[5] = &arr;//取出来数组的地址存在pa里面
+	return 0;
+}
