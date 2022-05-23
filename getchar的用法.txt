@@ -1,3 +1,6 @@
+//getchar函数只能获取一个字符，如果想要获取多个字符，就要使用多个getchar()
+//c = getchar(c);
+//putchar(c);
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 int main() {
