@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+enum match{
+	who,
+	what,
+	when,
+	where,
+	why
+};
+int main() {
+	int c;
+	scanf("%d", &c);
+	switch (c) {
+	case who:
+		printf("谁？");
+		break;
+	case what:
+		printf("什么？");
+		break;
+	case when:
+		printf("什么时候？");
+		break;
+	case where:
+		printf("什么地点？");
+		break;
+	case why:
+		printf("为什么？");
+		break;
+	}
+	return 0;
+}
