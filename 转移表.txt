@@ -1,0 +1,48 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//转移表
+void menu() {
+	printf("****************************\n");
+	printf("****   1.add    2.sub    ***\n");
+	printf("****   3.mul    4.div    ***\n");
+	printf("****   5.XOR    0.EXIT   ***\n");
+	printf("****************************\n");
+}
+int Add(int x,int y) {
+	return x + y;
+}
+int Sub(int x, int y) {
+	return x - y;
+}
+int Mul(int x, int y) {
+	return x * y;
+}
+int Div(int x, int y) {
+	return x / y;
+}
+int Xor(int x, int y) {
+	return x ^ y;
+}
+int main() {
+	int input, x, y;
+	int (*pfArr[])(int, int) = { 0,Add,Sub,Mul,Div ,Xor};
+	do {
+		menu();
+		printf("请选择：>\n");
+		scanf("%d", &input);
+		if (input >= 1 && input <= 5) {
+			printf("请输入两个操作数：>\n");
+			scanf("%d%d", &x, &y);
+			int ret = pfArr[input](x, y);
+			printf("%d\n", ret);
+		}
+		else if (input == 0) {
+			printf("退出\n");
+		}
+		else {
+			printf("输入错误：>\n");
+		}
+		
+	} while (input);
+	return 0;
+}
