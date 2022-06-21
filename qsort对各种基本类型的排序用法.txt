@@ -1,0 +1,56 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+int cmp1(const void* a, const void* b) {
+	//return (*(int*)a - *(int*)b);//升序
+	return (*(int*)b  - * (int*)a);//降序
+}
+
+int cmp2(const void* a, const void* b)
+{
+	//return *(char*)a - *(char*)b;//升序
+	return *(char*)b - *(char*)a;//降序
+}
+
+int cmp3(const void* a, const void* b)
+{
+	//return *(double*)a > *(double*)b ? 1 : -1;//升序
+	return *(double*)b > *(double*)a ? 1 : -1;//降序
+}
+
+int main() {
+	//排列整型数组
+	int arr[5] = { -3,5,2,-7,0 };
+	for (int i = 0; i < 5; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+	qsort(arr, 5, sizeof(int), cmp1);
+	for (int i = 0; i < 5; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+	
+	//排列字符数组
+	char word[9] = { 's','d','h','e','a','b','c','g','k' };
+	for (int i = 0; i < 5; i++)
+		printf("%c ", word[i]);
+	printf("\n");
+	qsort(word, 9, sizeof(word[0]), cmp2);
+	for (int i = 0; i < 5; i++)
+		printf("%c ", word[i]);
+	printf("\n");
+
+	//排列double类型数组
+	double dou[9] = { 9.0,8.0,3.0,2.0,7.0,5.0,1.0,4.0,6.0 };
+	for (int i = 0; i < 9; i++)
+		printf("%lf ", dou[i]);
+	printf("\n");
+	qsort(dou, 9, sizeof(dou[0]), cmp3);
+	for (int i = 0; i < 9; i++)
+		printf("%lf ", dou[i]);
+	printf("\n");
+
+
+	
+
+	return 0;
+}
