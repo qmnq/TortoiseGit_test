@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<assert.h>
+#include<string.h>
+ char * my_strcat(char* dest,const char* str) {
+	/*assert( dest != NULL);
+	assert(str != NULL);*/
+	assert(dest);
+	assert(str);
+	char* ret = dest;//2.所以让ret存储dest的起始地址，最后把起始地址返回回去
+	while (*dest) {//1.由于起始位置dest一直++，最后会找不到起始地址
+		dest++;
+	}
+	while (*dest++ = *str++) {
+		;
+	}
+	return ret;
+}
+ int main(void) {
+	 char arr1[20] = "hello";
+	 char arr2[] = "world";
+	my_strcat(arr1, arr2);
+	 printf("%s\n", arr1);
+ }
