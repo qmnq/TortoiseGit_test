@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+//通过这个程序可以知道：字符串啊拷贝后，会自动添加一个‘\0’在添加完后的字母后面
+/*如：hello\0xxxxxxxxx  从它里面的‘\0’位置开始添加
+在添加完：wor后arr1 变成 hellowor\0xxxxxx  即：在r后面就自动添加了‘\0’ */
+int main() {
+	/*char arr1[] = "abcdefgh";
+	char arr2[] = "bit";
+	strncpy(arr1, arr2, 4);*/
+	char arr1[30] = "hello\0xxxxxxxxx";
+	char arr2[] = "world";
+	strncat(arr1, arr2,3);
+	printf("%s", arr1);
+	return 0;
+}
