@@ -1,0 +1,82 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<errno.h>
+#include<windows.h>
+//int main() {
+	////1.对NULL指针解引用
+	//int* p = malloc(40);
+	////p进行相关的判断
+	//*p = 10;//malloc开辟空间失败-对NULL指针解引用
+
+	////2.对动态内存的越界访问
+	//int* p = (int*)malloc(40);//10个int 0-9
+	//if (p == NULL)
+	//{
+	//	return 0;
+	//}
+	//int i = 0;
+	////越界
+	//for (i = 0; i <= 10; i++)
+	//{
+	//	*(p + i) = i;
+	//}
+	//free(p);//此时p并不指向(int*)malloc(40)；
+	//p = NULL;
+
+	////3.对非动态开辟内存使用free释放
+	//int a = 10;
+	//int* p = &a;
+	////......
+	////对非动态开辟内存使用free释放
+	//free(p);
+	//p = NULL;
+
+	////4.使用free释放动态开辟内存的一部分
+	//int* p = (int*)malloc(40);
+	//if (p = NULL)
+	//{
+	//	return 0;
+	//}
+	//int i = 0;
+	//for (i = 0; i < 10; i++)
+	//{
+	//	*p++ = i;
+	//}
+	////回收空间
+	//free(p);//越界释放
+	//p = NULL;
+
+	////5.对同一块动态内存的多次释放
+	//int* p = (int*)malloc(40);
+	//if (p = NULL)
+	//{
+	//	return 0;
+	//}
+	////使用
+	////释放
+	//free(p);
+	///*为了避免出现多次重复释放
+	//p = NULL是很有必要的*/ 
+	////.......
+	//free(p);
+//	return 0;
+//}
+
+
+	////6.动态开辟内存忘记释放（内存泄露，即一直开辟但不释放）
+	//void test()//对于这种函数，由于p是函数里的变量
+	//{//当申请了空间后，p就会消失，因此，到时候就算是想要去释放空间，也无法找到它的位置了
+	//	int* p = (int*)malloc(100);
+	//	if (NULL != p)
+	//	{
+	//		*p = 20;
+	//	}
+	//}
+	//int main()
+	//{
+	//	test();
+	//	while (1);
+	//	return 0;
+	//}

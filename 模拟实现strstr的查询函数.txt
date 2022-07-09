@@ -1,0 +1,40 @@
+//模拟实现strstr的查询函数
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<assert.h>
+char* my_strstr(const char* p1, const char* p2) {
+	assert(p1 != NULL);
+	assert(p2 != NULL);
+
+	const char *s1 = p1;
+	const char* s2 = p2;
+	const char* cur = p1;
+	//1. p2为空字符串
+	if (*p2 == '\0') {
+		return(char*)p1;
+	}
+	while (*cur) {
+		s1 = cur;//cur 记录有可能匹配成功的起始位置
+		s2 = p2;
+		while ((*s1 != '\0') && (*s2 != '\0') && (*s1 == *s2)) {
+			s1++;
+			s2++;
+		}
+		if (*s2 == '\0') {
+			return(char*)cur;
+		}
+		cur++;
+	}
+}
+int main() {
+	const char* p1 = "abcdefghi";
+	const char* p2 = "def";
+	char* ret = my_strstr(p1, p2);
+	if (ret == NULL) {
+		printf("字符串不存在\n");
+	}
+	else {
+		printf("%s\n", ret);
+	}
+	return 0;
+} 

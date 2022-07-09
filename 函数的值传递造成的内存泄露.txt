@@ -1,0 +1,50 @@
+/*#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+//程序崩溃的原因：
+void GetMemory(char** p)//2.此处的p只是str的一份临时拷贝,其值也是NULL
+{
+	*p = (char*)malloc(100);//3.此处p被赋予了地址值
+	//4.但由于该函数结束后，p会被释放，因此开辟的空间便找不到了
+	//造成了内存泄露（值传递）
+}
+void test()
+{
+	char* str = NULL;
+	GetMemory(&str);//1.此处为传值调用，因此
+	//5.上述函数的str的值任然是NULL（传值调用，不会改变值）
+	strcpy(str, "hello world");//6.由于要将字符传拷贝到一个空指针中，因此崩溃
+	printf(str);//7.注意：printf的打印并没有错误！！！
+	return 0;
+}
+int main()
+{
+	test();
+	return 0;
+}*/
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+//程序崩溃的原因：
+void GetMemory(char* p)//2.此处的p只是str的一份临时拷贝,其值也是NULL
+{
+	p = (char*)malloc(100);//3.此处p被赋予了地址值
+	//4.但由于该函数结束后，p会被释放，因此开辟的空间便找不到了
+	//造成了内存泄露（值传递）
+}
+void test()
+{
+	char* str = NULL;
+	GetMemory(&str);//1.此处为传值调用，因此
+	//5.上述函数的str的值任然是NULL（传值调用，不会改变值）
+	strcpy(str, "hello world");//6.由于要将字符传拷贝到一个空指针中，因此崩溃
+	printf(str);//7.注意：printf的打印并没有错误！！！
+	return 0;
+}
+int main()
+{
+	test();
+	return 0;
+}
