@@ -1,0 +1,87 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+//方法1.柔性数组
+struct S
+{
+	int n;
+	int arr[0];
+};
+
+int main()
+{
+	struct S* ps = (struct S*)malloc(sizeof(struct S) + 5 * sizeof(int));
+	if (ps != NULL)
+	{
+		ps->n = 100;
+	}
+	printf("%d\n", ps->n);
+	int i = 0;
+	for (i = 0; i < 5; i++)
+	{
+		ps->arr[i] = i;
+
+	}
+	struct S* ptr = realloc(ps, 44);
+	if (ptr != NULL)
+	{
+		ps = ptr;
+	}
+	for (i = 5; i < 10; i++)
+	{
+		ps->arr[i] = i;
+	}
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", ps->arr[i]);
+	}
+	free(ps);
+	return 0;
+}
+
+////方法2.动态内存管理（malloc,realloc）
+////方法2相对于方法1的缺点是：
+////	*1.由于多次使用malloc，因此容易忘记free,造成错误
+////    *2.由于malloc是随机生成空间，于是没有利用的 空间碎片 会增多，空间利用率会降低
+////	*3.由于方法2中，ps 的malloc,与ps->arr的malloc是两次不同的开辟，因此其内存空间并不是连续的。相对于柔性数组其读取的效率会更低
+//struct S
+//{
+//	int n;
+//	int* arr;
+//};
+//
+//int main() 
+//{
+//	struct S* ps = (struct S*)malloc(sizeof(struct S));
+//	ps->arr = malloc(5 * sizeof(int));
+//	int i = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	printf("\n");
+//	//调整
+//	int* ptr = realloc(ps->arr, 10 * sizeof(int));
+//	if (ptr != NULL)
+//	{
+//		ps->arr = ptr;
+//	}
+//	for (i = 5; i < 10; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	for (i = 0; i < 10; i++) 
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	//释放空间一定要先释放ps->arr，
+//	//如果先释放ps，则ps->arr便无法再找到
+//	free(ps->arr);
+//	free(ps);
+//	return 0;
+//}
