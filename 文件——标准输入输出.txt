@@ -1,0 +1,20 @@
+//从键盘输入
+//输出到屏幕
+//键盘&屏幕都是外部设备
+
+//键盘-标准输入设备
+//屏幕-标准输出设备
+//是一个程序默认打开的两个流设备
+
+//stdin FILE*
+//Stdout FILE*
+//stderr FILE* 如：
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main()
+{
+	int ch = fgetc(stdin);
+	fputc(ch, stdout);
+	return 0;
+}
