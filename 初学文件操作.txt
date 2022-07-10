@@ -1,0 +1,14 @@
+//以数据文件和文本文件形式打开
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+int main() {
+	int a = 10000;//创建变量a,并赋值10000
+	FILE* pf = fopen("test.txt", "wb");//fopen，以二进制编写的形式打开文件test.txt,如果没有该文件就创造该文件
+	fwrite(&a, 4, 1, pf);//fwrite写入数据（数据来自a的地址，写4个字节，写一个这样的数据，放到pf文件中去）；
+	fclose(pf);//关闭pf指向的文件
+	pf = NULL;//将pf赋值为空指针
+	return 0;
+}
+//在代码存放的路径下会找到test.txt文件（二进制），直接打开的是数据文件——乱码
+//在vs编译器下，打开现有文件，以二进制形式重新打开，会得到10 27 00 00 的十六进制（小端）
+//经过计算器的转化可得十六进制的27 10在十进制中是10000
