@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+int main()
+{
+	FILE* pfwrite = fopen("test.text", "w");
+	if (pfwrite == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	//写文件
+	fputc('b', pfwrite);
+	fputc('i', pfwrite);
+	fputc('t', pfwrite);
+
+	//关闭文件
+	fclose(pfwrite);
+	pfwrite = NULL;
+
+	return 0;
+}

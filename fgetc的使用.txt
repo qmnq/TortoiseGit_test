@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+
+int main()
+{
+	FILE* pfread = fopen("test.text", "r");
+	if (pfread == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	//写文件
+	printf("%c", fgetc(pfread));
+	printf("%c", fgetc(pfread));
+	printf("%c", fgetc(pfread));
+	
+
+	//关闭文件
+	fclose(pfread);
+	pfread = NULL;
+
+	return 0;
+}
