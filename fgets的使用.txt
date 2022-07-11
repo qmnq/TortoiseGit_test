@@ -19,3 +19,4 @@ int main() {
 	pf = NULL;
 	return 0;
 }
+//从文件中读取字符串到buf中，再打印

@@ -17,3 +17,4 @@ int main() {
 	pf = NULL;
 	return 0;
 }
+//从fputs("hello",pf)中将字符串传输到文件中
