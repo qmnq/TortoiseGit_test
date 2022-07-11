@@ -9,11 +9,9 @@ int main() {
 	{
 		return 0;
 	}
-	//读文件
-	fgets(buf, 1024, pf);
-	printf("%s", buf);
-	fgets(buf, 1024, pf);
-	printf("%s", buf);
+	//写文件
+	fputs("hello",pf);
+	fputs("world",pf);
 	
 	fclose(pf);
 	pf = NULL;
