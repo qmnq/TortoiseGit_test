@@ -20,3 +20,4 @@ int main() {
 	pf = NULL;
 	return 0;
 }
+//将文件中的数据传输到struct S s = { 0 }中去

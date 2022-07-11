@@ -17,3 +17,4 @@ int main() {
 	pf = NULL;
 	return 0;
 }
+//将struct S s = { 100,3.14f,"bit" }的数据传输到文件中去
