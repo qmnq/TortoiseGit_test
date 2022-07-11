@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+//fread的用法
+//size_t fread(void* bufffer, size_t size, size_t count, FILE* stream);
+//             存储数据的位置  元素大小     最多元素个数   文件指针
+struct S {
+	char name[20];
+	int age;
+	double score;
+};
+int main()
+{
+	//struct S s = { "张三",20,55.6 };
+	struct S tmp = { 0 };
+	FILE* pf = fopen("test.txt", "rb");//以二进制形式写文件
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//二进制形式读文件
+	fread(&tmp, sizeof(struct S), 1, pf);
+	printf("%s %d %lf\n", tmp.name, tmp.age, tmp.score);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}

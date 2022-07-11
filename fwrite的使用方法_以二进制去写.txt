@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+//fwrite的用法
+//size_t fwrite(const void* bufffer, size_t size, size_t count, FILE* stream);
+//      要输出数据的地址	元素的大小（字节） 最多被写元素个数  文件指针	
+struct S {
+	char name[20];
+	int age;
+	double score;
+};
+int main()
+{
+	struct S s = { "张三",20,55.6 };
+	FILE* pf = fopen("test.txt", "wb");//以二进制形式写文件
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//二进制形式写文件
+	fwrite(&s, sizeof(struct S), 1, pf);
+
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
+
