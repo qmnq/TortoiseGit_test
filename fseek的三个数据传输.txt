@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+//文件test.txt,中写abcdef
+
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+int main() {
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	//定位文件指针
+	fseek(pf,1, SEEK_SET);//从起始位置偏移1位
+	
+	fseek(pf, 2, SEEK_CUR);//接着上面的偏移量再偏移2位
+	int ch = fgetc(pf);
+	printf("%c\n", ch);//d
+	//读取文件
+	fseek(pf, -2, SEEK_END);
+	ch = fgetc(pf);
+	printf("%c\n", ch);//e
+
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
