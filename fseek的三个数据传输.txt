@@ -1,5 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 //文件test.txt,中写abcdef
+//int fseek(FILE* stream,long int offset,int origin);
+//int origin的参数：SEEK_SET:文件起始位置
+//					SEEK_CUR:文件当前位置
+//					SEEK_END:文件末尾位置
+
 
 #include<stdio.h>
 #include<string.h>
