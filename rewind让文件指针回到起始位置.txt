@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+//test.txt:abcdef
+
+//void rewind(FILE* stream);//让文件的指针回到起始位置
+#include<stdio.h>
+#include<string.h>
+#include<errno.h>
+int main() {
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}
+	////定位文件指针
+	//fseek(pf,1, SEEK_SET);//从起始位置偏移1位
+	
+	int ch = fgetc(pf);
+	printf("%c\n", ch);
+	rewind(pf);
+	ch = fgetc(ch);
+	printf("%c\n", ch);
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
